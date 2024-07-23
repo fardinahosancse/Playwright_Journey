@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test'
-import { PagesComponent } from '../src/app/pages/pages.component';
+import { PagesComponent } from '../../src/app/pages/pages.component';
 import { Exception, TRUE } from 'sass';
 
 
@@ -28,7 +28,7 @@ import { Exception, TRUE } from 'sass';
         */
         await vlocatorPath.waitFor({state:'visible'})
         expect(vlocatorPath).toBeVisible({visible:true})
-
+  
         //Locator Assertion Auto Wait Example
         await vlocatorPath.waitFor({state:'attached'})
         expect(vlocatorPath).toHaveText('Data loaded with AJAX get request.',{timeout:2000}) //Override Custom Timeout for project need

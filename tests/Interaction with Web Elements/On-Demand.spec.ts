@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test'
-import { PagesComponent } from './../src/app/pages/pages.component';
+import { PagesComponent } from '../../src/app/pages/pages.component';
 import { TRUE } from 'sass';
 
     test.beforeEach(async({page})=>{

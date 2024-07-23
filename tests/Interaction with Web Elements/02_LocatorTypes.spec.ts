@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test'
-import { PagesComponent } from '../src/app/pages/pages.component';
+import { PagesComponent } from '../../src/app/pages/pages.component';
 import { Exception, TRUE } from 'sass';
 
 // test.describe('Test Suite 1', () =>{ //Test Suite
