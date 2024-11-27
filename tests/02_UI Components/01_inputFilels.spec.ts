@@ -1,35 +1,30 @@
 import {expect, test} from '@playwright/test'
-test.use({ ignoreHTTPSErrors: true }); // Add this line
+
 test.beforeEach(async({page})=>{
-    await page.goto ('https://uitestingplayground.com/ajax')
-    await page.getByText('Button Triggering AJAX Request').click()
+    await page.goto ('http://localhost:4200/')
   })
 
+test.describe('Form Layout Page: Using the Grid',()=>{
+  test.beforeEach(async({page})=>{
+    await page.getByText('Forms').click()
+    await page.getByText('Form Layout').click()
+  })
 
+  test('01_InputFields',async({page})=>{
+    const using_the_grid = page.locator('nb-card').filter({hasText:'Using the Grid'})
+    await using_the_grid.getByPlaceholder('Email').fill('fardinahosan@gmail.com')
+   // await using_the_grid.getByPlaceholder('Email').clear()
+    //await using_the_grid.getByPlaceholder('Email').type('miao')
 
-test('08_Auto Waiting',async({page})=>{
+    //Generic Assertions
+    await expect(await using_the_grid.getByPlaceholder('Email').inputValue()).toEqual('fardinahosan@gmail.com')
 
-  //click()- Comes with auto waiting
-  //await page.getByText('Button Triggering AJAX Request').click()
-  //await page.getByText('Data loaded with AJAX get request.').click()
+    //Locator  Assertions
+    const dam = await using_the_grid.getByPlaceholder('Email')
+    await expect(dam).toHaveValue('fardinahosan@gmail.com')
+  })
 
-  //textContent() - comes with auto waiting
- // const data = await page.getByText('Data loaded with AJAX get request.').textContent()
-  //await expect(data).toEqual('Data loaded with AJAX get request.')
-
-  //allTextContents() - doesnt comewith auto waiting
-  const SuccessText = page.getByText('Data loaded with AJAX get request.')
-  await SuccessText.waitFor({state:'attached'})
-  const datas = await SuccessText.allTextContents()
-  expect(datas).toContain('Data loaded with AJAX get request.')
 })
 
-test('08_WaitForSelector',async({page})=>{
-  await page.waitForSelector('.bg-success')
-  expect(await page.locator('.bg-success').allTextContents()).toContain('Data loaded with AJAX get request.')
-})
 
-test('08_WaitForResponse',async({page})=>{
-  await page.waitForSelector('.bg-success')
-  expect(await page.locator('.bg-success').allTextContents()).toContain('Data loaded with AJAX get request.')
-})
+
