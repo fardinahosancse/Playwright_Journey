@@ -10,6 +10,10 @@
     "ng": "ng",
     "start": "ng serve"
   },
+  "scripts": {
+     "test": "playwright codegen --ignore-https-errors" 
+    },
+
   "dependencies": {
     "@angular/animations": "^14.2.12",
     "@angular/cdk": "12.1.0",
