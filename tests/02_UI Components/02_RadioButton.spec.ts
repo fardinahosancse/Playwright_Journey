@@ -1,11 +1,10 @@
 import {expect, test} from '@playwright/test'
 
-test.beforeEach(async({page})=>{
-    await page.goto ('http://localhost:4200/')
-  })
+
 
 test.describe('Form Layout Page: Using the Grid',()=>{
   test.beforeEach(async({page})=>{
+    await page.goto ('http://localhost:4200/')
     await page.getByText('Forms').click()
     await page.getByText('Form Layout').click()
   })
@@ -53,5 +52,39 @@ test.describe('Form Layout Page: Using the Grid',()=>{
 
 })
 
+test.describe('Radio Buttons Pactice',()=>{
+  test.beforeEach(async({page})=>{
+    await page.goto ('https://practice.expandtesting.com/radio-buttons')
+  })
+
+  test('RadioButton',async({page})=>{
+    await page.getByRole('radio',{name:'Blue'}).check({force:true})
+    await page.getByRole('radio',{name:'Red'}).check({force:true})
+    const RedStat = await page.getByRole('radio',{name:'Red'}).isChecked()
+    await expect.soft(RedStat).toBeTruthy()
+    await expect.soft(await page.getByRole('radio',{name:'Blue'}).isChecked()).toBeFalsy()
+
+  })
 
 
+})
+
+test.describe('Checkboxes',()=>{
+  test.beforeEach(async({page})=>{
+    await page.goto ('https://practice.expandtesting.com/checkboxes')
+  })
+
+  test('Checkboxes',async({page})=>{
+    // Locate all checkboxes
+    const checkboxes = await page.getByRole('checkbox')
+
+    for(const checkx of await checkboxes.all()){
+      console.log(checkx)
+      await checkx.check({force:true})
+      expect(await checkx.isChecked()).toBeTruthy()
+    }
+
+  })
+
+
+})
