@@ -40,7 +40,6 @@ test.describe('04_List&Dropdowns',()=>{
   
 
 
-
   test('02_JavaScriptD_Dialogs',async({page})=>{
 
     await page.goto('https://practice.expandtesting.com/js-dialogs')
