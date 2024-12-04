@@ -30,6 +30,6 @@ test('08_WaitForSelector',async({page})=>{
 })
 
 test('08_WaitForResponse',async({page})=>{
-  await page.waitForSelector('.bg-success')
+  await page.waitForResponse('https://uitestingplayground.com/ajax')
   expect(await page.locator('.bg-success').allTextContents()).toContain('Data loaded with AJAX get request.')
 })
