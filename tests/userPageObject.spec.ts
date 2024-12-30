@@ -1,30 +1,38 @@
 import {expect, test} from '@playwright/test'
-import { filter } from 'rxjs/operators';
+import { filter, timeout } from 'rxjs/operators';
 import { NavigationPage } from './../page-objects/navigationPage';
+import { FormLayoutPage } from '../page-objects/formLayoutPage';
+import { time } from 'console';
 
 
 test.beforeEach(async({page})=>{
     await page.goto ('http://localhost:4200/')
   })
 
-  test('navigateToFormPage',async({page})=>{
+  test('VerifyNaviagteToFormPage',async({page})=>{
     const navigateTo = new NavigationPage(page)
     await navigateTo.pageFormLayout()
-    await navigateTo.pageDatePicker()
+    await timeout(1000)
+    await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
   })
 
-  test('navigateTowebTablePage',async({page})=>{
+  test('VerifyFillingUsingTheGirdwithRequiredData',async({page})=>{
     const navigateTo = new NavigationPage(page)
-    await navigateTo.pageWebTable()
+    const onFormLayoutPage = new FormLayoutPage(page)
+    await navigateTo.pageFormLayout()
+    await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
+    await onFormLayoutPage.submitUsingTheGirdWithCredentialAndSelectOption('fardinahosan@gmail.com','121121','Option 1')
   })
 
-  test('navigateToToasterPage',async({page})=>{
+  test('VerifyFillingInlineFormwithRequiredData',async({page})=>{
     const navigateTo = new NavigationPage(page)
-    await navigateTo.pageToaster()
+    const onFormLayoutPage = new FormLayoutPage(page)
+    await navigateTo.pageFormLayout()
+    //await timeout(2000)
+    await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
+    await onFormLayoutPage.submitInlineForm('Fardin Ahosan','fardinahosan@gmail.com','Remember me',false)
   })
 
-  test('navigateToTooltipPage',async({page})=>{
-    const navigateTo = new NavigationPage(page)
-    await navigateTo.pageTooltip()
-  })
+
+
 
