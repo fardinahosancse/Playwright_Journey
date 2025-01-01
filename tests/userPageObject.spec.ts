@@ -3,6 +3,7 @@ import { filter, timeout } from 'rxjs/operators';
 import { NavigationPage } from './../page-objects/navigationPage';
 import { FormLayoutPage } from '../page-objects/formLayoutPage';
 import { time } from 'console';
+import { DatePickerPage } from '../page-objects/datePickerPage';
 
 
 test.beforeEach(async({page})=>{
@@ -31,6 +32,13 @@ test.beforeEach(async({page})=>{
     //await timeout(2000)
     await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
     await onFormLayoutPage.submitInlineForm('Fardin Ahosan','fardinahosan@gmail.com','Remember me',false)
+  })
+
+  test('VerifyCommonDateSelectionFroDatePickerPage',async({page})=>{
+    const navigateTo = new NavigationPage(page)
+    const onDatePickerPage = new DatePickerPage(page)
+    await navigateTo.pageDatePicker()
+    await onDatePickerPage.selectCommonDatePickerFromToday(450)
   })
 
 
