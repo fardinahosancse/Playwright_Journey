@@ -57,12 +57,13 @@ test.describe('08_Practice_DatePicker_Part1',()=>{
     const expectedCalendarInputFieldAssert = expectedMonthShort + " " + expectedDate + ","+ " " + expectdeYear 
     const expecetdCalendarSelectionViewDate = " "+expectedMonthFull+" "+expectdeYear+" "
 
-   
+    //V01 -Artemis Approch
     // while(!calendarSelectionViewMonthYear.includes(expecetdCalendarSelectionViewDate)){
     //   await page.locator('[data-name="chevron-right"]').click()
     //   calendarSelectionViewMonthYear = await page.locator('nb-calendar nb-calendar-view-mode').textContent()
     // }
 
+    //V02 -My Approch
     while(true){
       let calendarSelectionViewMonthYear = await page.locator('nb-calendar nb-calendar-view-mode').textContent()
       if(calendarSelectionViewMonthYear.includes(expecetdCalendarSelectionViewDate)){
