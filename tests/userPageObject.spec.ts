@@ -41,6 +41,13 @@ test.beforeEach(async({page})=>{
     await onDatePickerPage.selectCommonDatePickerFromToday(450)
   })
 
+  test('VerifyRangeDateSelectionFromDatePickerPage',async({page})=>{
+    const navigateTo = new NavigationPage(page)
+    const onDatePickerPage = new DatePickerPage(page)
+    await navigateTo.pageDatePicker()
+    await onDatePickerPage.selectDatewitRangeFromToday(5,10)
+  })  
+
 
 
 
