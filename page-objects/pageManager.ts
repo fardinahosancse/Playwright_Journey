@@ -6,7 +6,7 @@ import { DatePickerPage } from '../page-objects/datePickerPage';
 export class PageManager{
     private readonly page:Page
     private readonly navigationPage : NavigationPage
-    private readonly formLayoutPage: FormLayoutPage
+    private readonly formLayoutPage: FormLayoutPage 
     private readonly datePickerPage: DatePickerPage
     constructor(page:Page){
         this.page = page

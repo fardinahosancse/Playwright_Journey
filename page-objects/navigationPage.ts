@@ -1,40 +1,41 @@
 import { Page } from "@playwright/test";
+import { HelperBase } from "./helperBase";
 
-export class NavigationPage {
-  readonly onThisNavPage: Page;
-
+export class NavigationPage extends HelperBase {
+  
   constructor(page: Page) {
-    this.onThisNavPage = page;
+    super(page)
   }
 
   async pageFormLayout() {
     await this.navbarAction("Forms");
-    await this.onThisNavPage.getByText("Form Layout").click();
+    await this.page.getByText("Form Layout").click();
+    await this.waitForNumberOfSeconds(3)
   }
 
   async pageDatePicker() {
     await this.navbarAction("Forms");
-    await this.onThisNavPage.getByText("Datepicker").click();
+    await this.page.getByText("Datepicker").click();
   }
 
   async pageWebTable() {
     await this.navbarAction("Tables & Data");
-    await this.onThisNavPage.getByText("Smart Table").click();
+    await this.page.getByText("Smart Table").click();
   }
 
   async pageToaster() {
     await this.navbarAction("Modal & Overlays");
-    await this.onThisNavPage.getByText("Toastr").click();
+    await this.page.getByText("Toastr").click();
   }
 
   async pageTooltip() {
     await this.navbarAction("Modal & Overlays");
-    await this.onThisNavPage.getByText("Tooltip").click();
+    await this.page.getByText("Tooltip").click();
   }
 
   // Function to check if the navbar is already extended
   private async navbarAction(buttonName: string) {
-    const buttonTitle = this.onThisNavPage.getByTitle(buttonName);
+    const buttonTitle = this.page.getByTitle(buttonName);
     const navState = await buttonTitle.getAttribute("aria-expanded");
     if (navState === "false") {
       await buttonTitle.click();

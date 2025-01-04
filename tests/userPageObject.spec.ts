@@ -13,7 +13,6 @@ test.beforeEach(async({page})=>{
   test('VerifyNaviagteToFormPage',async({page})=>{
     const navigateTo = new NavigationPage(page)
     await navigateTo.pageFormLayout()
-    await timeout(1000)
     await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
   })
 

@@ -1,9 +1,13 @@
 import { Page } from "@playwright/test";    
 
 export class HelperBase{
-    readonly helper:Page
-    
+    protected readonly page:Page
+
     constructor(page:Page){
-        this.helper=page
+        this.page=page
+    }
+
+    async waitForNumberOfSeconds(timeInSeconds:number){
+        await this.page.waitForTimeout(timeInSeconds * 1000)
     }
 }
