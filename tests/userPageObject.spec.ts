@@ -4,6 +4,7 @@ import { NavigationPage } from './../page-objects/navigationPage';
 import { FormLayoutPage } from '../page-objects/formLayoutPage';
 import { time } from 'console';
 import { DatePickerPage } from '../page-objects/datePickerPage';
+import { TestDataGenerator } from '../utility/testDataGenerator';
 
 
 test.beforeEach(async({page})=>{
@@ -21,6 +22,10 @@ test.beforeEach(async({page})=>{
     const navigateTo = new NavigationPage(page)
     const onFormLayoutPage = new FormLayoutPage(page)
     await navigateTo.pageFormLayout()
+    //test data
+    const randomFullName = TestDataGenerator.generateFullName();
+    const randomEmail = TestDataGenerator.generateEmail();
+
     await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
     await onFormLayoutPage.submitUsingTheGirdWithCredentialAndSelectOption('fardinahosan@gmail.com','121121','Option 1')
   })
@@ -29,7 +34,7 @@ test.beforeEach(async({page})=>{
     const navigateTo = new NavigationPage(page)
     const onFormLayoutPage = new FormLayoutPage(page)
     await navigateTo.pageFormLayout()
-    //await timeout(2000)
+    await timeout(2000)
     await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
     await onFormLayoutPage.submitInlineForm('Fardin Ahosan','fardinahosan@gmail.com','Remember me',false)
   })
