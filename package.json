@@ -14,7 +14,8 @@
     "lint": "ng lint",
     "test_PageObjectChrome": "npx playwright test userPageObject.spec.ts --project=chromium",
     "test_PageObjectFirefox": "npx playwright test userPageObject.spec.ts --project=firefox",
-    "test_all": "npm run test_PageObjectChrome && npm run test_PageObjectFirefox"
+    "test_all": "npm run test_PageObjectChrome && npm run test_PageObjectFirefox",
+    "test_smoke": "npx playwright test --project=chromium --grep @smoke"
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",

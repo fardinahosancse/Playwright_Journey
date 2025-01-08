@@ -11,11 +11,11 @@ test.beforeEach(async({page})=>{
     await page.goto ('http://localhost:4200/')
   })
 
-  test('VerifyNaviagteToFormPage',async({page})=>{
+  test('VerifyNaviagteToFormPage @smoke',async({page})=>{
     const navigateTo = new NavigationPage(page)
     await navigateTo.pageFormLayout()
     await timeout(1000)
-    await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
+    await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/lay outs')
   })
 
   test('VerifyFillingUsingTheGirdwithRequiredData',async({page})=>{
@@ -23,11 +23,11 @@ test.beforeEach(async({page})=>{
     const onFormLayoutPage = new FormLayoutPage(page)
     await navigateTo.pageFormLayout()
     //test data
-    const randomFullName = TestDataGenerator.generateFullName();
+    const randomPassword = TestDataGenerator.generatePassword()
     const randomEmail = TestDataGenerator.generateEmail();
 
     await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
-    await onFormLayoutPage.submitUsingTheGirdWithCredentialAndSelectOption('fardinahosan@gmail.com','121121','Option 1')
+    await onFormLayoutPage.submitUsingTheGirdWithCredentialAndSelectOption(randomEmail,randomPassword,'Option 1')
   })
 
   test('VerifyFillingInlineFormwithRequiredData',async({page})=>{
