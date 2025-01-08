@@ -53,8 +53,7 @@ export class DatePickerPage{
       }
       await this.page.locator('[data-name="chevron-right"]').click()
     }
-    const currentMonthDates = await this.page.locator('.day-cell.ng-star-inserted')
-    await currentMonthDates.getByText(expectedDate,{exact:true}).click()
+    await this.page.locator('.day-cell.ng-star-inserted:not(.bounding-month)').getByText(expectedDate,{exact:true}).click()
     return expectedCalendarInputFieldAssert
     }
 

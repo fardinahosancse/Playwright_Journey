@@ -11,7 +11,10 @@
     "start": "ng serve",
     "test": "playwright codegen --ignore-https-errors",
     "build": "ng build",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "test_PageObjectChrome": "npx playwright test userPageObject.spec.ts --project=chromium",
+    "test_PageObjectFirefox": "npx playwright test userPageObject.spec.ts --project=firefox",
+    "test_all": "npm run test_PageObjectChrome && npm run test_PageObjectFirefox"
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",
@@ -24,6 +27,7 @@
     "@angular/platform-browser-dynamic": "^14.2.12",
     "@angular/router": "^14.2.12",
     "@asymmetrik/ngx-leaflet": "3.0.1",
+    "@faker-js/faker": "^9.3.0",
     "@nebular/auth": "10.0.0",
     "@nebular/eva-icons": "10.0.0",
     "@nebular/security": "10.0.0",

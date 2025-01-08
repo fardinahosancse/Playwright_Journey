@@ -8,6 +8,7 @@ export class FormLayoutPage{
         this.page = page
     }
 
+
     /**
      * 
      * @param email -Porvide valid email address that must contain @
