@@ -129,7 +129,7 @@ npm start
 To run all tests in   Playwright UI Mode  , use the following command:
 
 ``` 
-npx playwright show-report
+npx playwright test --ui
 ```
 
 This will open up the Playwright Test Reporter in UI Mode.
@@ -154,6 +154,12 @@ To run tests for specific browsers via the command line interface, use the follo
 
   ``` 
   npm run test_all
+  ```
+
+  -   Check Report
+
+  ``` 
+  npx playwright show-report        
   ```
 
 These commands will execute the respective test suites in the specified browsers.
