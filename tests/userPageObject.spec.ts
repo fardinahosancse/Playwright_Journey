@@ -8,14 +8,14 @@ import { TestDataGenerator } from '../utility/testDataGenerator';
 
 
 test.beforeEach(async({page})=>{
-    await page.goto ('http://localhost:4200/')
+    await page.goto ('/')
   })
 
   test('VerifyNaviagteToFormPage @smoke',async({page})=>{
     const navigateTo = new NavigationPage(page)
     await navigateTo.pageFormLayout()
     await timeout(1000)
-    await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/lay outs')
+    await expect.soft(await page.url()).toEqual('http://localhost:4200/pages/forms/layouts')
   })
 
   test('VerifyFillingUsingTheGirdwithRequiredData',async({page})=>{

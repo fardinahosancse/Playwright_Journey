@@ -1,11 +1,12 @@
-import {expect, firefox, test} from '@playwright/test'
-import { filter } from 'rxjs/operators';
+import {expect} from '@playwright/test'
+import {test} from '../../test-options'
 
 
 
-  test('01_ReSize_iFrame', async ({ page }) => {
+
+  test('01_ReSize_iFrame', async ({ page,globalURL }) => {
     // Navigate to the test page
-    await page.goto('https://jqueryui.com/selectable/');
+    await page.goto(globalURL);
 
     // Locate the iframe and elements inside it
     const iframeArea = page.frameLocator('.demo-frame');
