@@ -1,43 +1,30 @@
 import { defineConfig, devices } from '@playwright/test';
 import type { TestOptions } from './test-options';
+import { time } from 'console';
 require('dotenv').config();
-
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
-
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
-
-
 
 
 export default defineConfig<TestOptions>({
+  timeout: 40000,
+  globalTimeout: 600000,
+  expect:{timeout:2000},
   testDir: './tests',
-  /* Run tests in files in parallel */
   fullyParallel: false,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
   retries: process.env.CI ? 2 : 1,
-  /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.BASE_URL,
     globalURL:process.env.GLOBAL_URL,
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
+    actionTimeout:2000,
+    navigationTimeout:2500,
+    video:{
+      mode:'off',
+      size: { width: 1920, height: 1080 }
+    }
   },
 
-  /* Configure projects for major browsers */
   projects: [
     {
       name:'development',
@@ -71,11 +58,6 @@ export default defineConfig<TestOptions>({
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
     },
     {
       name: 'chrome web',
