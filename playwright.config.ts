@@ -5,8 +5,8 @@ require('dotenv').config();
 
 
 export default defineConfig<TestOptions>({
-  timeout: 40000,
-  globalTimeout: 600000,
+  // timeout: 40000,
+  // globalTimeout: 600000,
   expect:{timeout:2000},
   testDir: './tests',
   fullyParallel: false,
@@ -18,7 +18,7 @@ export default defineConfig<TestOptions>({
     globalURL:process.env.GLOBAL_URL,
     trace: 'on',
     actionTimeout:2000,
-    navigationTimeout:2500,
+    // navigationTimeout:2500,
     video:{
       mode:'off',
       size: { width: 1920, height: 1080 }

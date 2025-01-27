@@ -15,14 +15,14 @@ export class PageManager{
         this.datePickerPage = new DatePickerPage(this.page)
     }
 
-    navigateToNavigationPage() {
+    navigateTo() {
         return this.navigationPage
     }
-    navigateToFormLayoutPage(){
+    onFormLayoutPage(){
         return this.formLayoutPage
     }
 
-    navigateToDatePickerPage(){
+    onDatePickerPage(){
         return this.datePickerPage
     }
 
